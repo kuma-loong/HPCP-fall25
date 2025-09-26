@@ -2,5 +2,6 @@
 *.exe
 *.out
 mpi_gemm
-hello_c
-test_mpi
+comm_demo
+hellow
+test
