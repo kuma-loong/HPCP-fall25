@@ -2,8 +2,8 @@
 In the test driver, there is a loop "for ( p=PFIRST; p<= PLAST; p+= PINC )"
 The below parameters set this range of values that p takes on
 */
-#define PFIRST 1024
-#define PLAST 1024
+#define PFIRST 4
+#define PLAST 4096
 #define PINC 256 // unused
 
 /*
@@ -50,3 +50,15 @@ then the leading dimension is set to the row dimension of matrix X.
 #define C(i, j) c[(i) * ldc + (j)]
 
 #define abs(x) ((x) < 0.0 ? -(x) : (x))
+
+#ifdef __cplusplus
+extern "C"
+{
+#endif
+
+    void MY_MMult(int m, int n, int k, double *A, int lda,
+                     double *B, int ldb, double *C, int ldc);
+
+#ifdef __cplusplus
+}
+#endif
