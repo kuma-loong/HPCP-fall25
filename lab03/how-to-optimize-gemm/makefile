@@ -1,5 +1,5 @@
 OLD  := MMult_cuda0
-NEW  := openblas
+NEW  := MMult_cuda_cublas
 
 CC         := gcc
 LINKER     := nvcc        #用 nvcc 链接，兼容 CUDA 对象文件
@@ -7,7 +7,7 @@ LINKER     := nvcc        #用 nvcc 链接，兼容 CUDA 对象文件
 # CUDA 编译器与参数
 CUDA_CC     := nvcc
 CUDA_CFLAGS := -g -Xcompiler -fPIC -Wno-deprecated-gpu-targets -gencode arch=compute_89,code=sm_89
-CUDA_LDFLAGS := -lcudart
+CUDA_LDFLAGS := -lcudart -lcublas
 
 # 通用 C 编译参数
 CFLAGS     := -Wall -Werror -Wno-unused-result -Wno-unused-value -Wno-unused-variable -g -fdiagnostics-color=auto -pthread -fopenmp
