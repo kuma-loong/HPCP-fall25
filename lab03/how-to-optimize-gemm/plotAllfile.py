@@ -33,8 +33,17 @@ if __name__ == '__main__':
     plt.ylabel('gflops')
     l = len(sys.argv)
     
-    curves_marker = ['bo-.', 'r-*', 'g-.', 'k--', 'm,', 'c:']
-
+    curves_marker = [
+        'bo-.',  # 蓝色, 圆点, 点划线
+        'r-*',   # 红色, 星号, 实线
+        'g-D',   # 绿色, 实线, 菱形
+        'k--s',  # 黑色, 虚线, 方块
+        'm:^',   # 洋红, 点线, 上三角
+        'c-p',   # 青色, 实线, 五边形
+        'y--H',  # 黄色, 虚线, 六边形
+        'b-x',   # 蓝色, 实线, x标记 (与第一条线型不同)
+        'r:+'    # 红色, 点线, +标记 (与第二条线型不同)
+    ]
     data_dir = './_data/'
     files = os.listdir(data_dir)
     print(files)
@@ -50,6 +59,6 @@ if __name__ == '__main__':
         i = i + 1
     
     plt.legend()
-    # plt.savefig("all_method.png")
+    #plt.savefig("all_method_gpu.png")
     plt.show()
 
