@@ -24,6 +24,7 @@ __global__ void MMultKernelShared(int m, int n, int k,
     __shared__ double Bs[TILE_SIZE][TILE_SIZE];
 
     // 按 k 方向分块处理
+    #pragma unroll
     for (int t = 0; t < (k + TILE_SIZE - 1) / TILE_SIZE; t++)
     {
         // 每个线程从全局内存加载 A、B 的一部分到共享内存
@@ -37,7 +38,7 @@ __global__ void MMultKernelShared(int m, int n, int k,
         // 确保整个 tile 加载完成
         __syncthreads();
 
-        #pragma unroll 8        //循环展开
+        #pragma unroll        //循环展开
         for (int i = 0; i < TILE_SIZE; i++) {
             result += As[ty][i] * Bs[tx][i];
         }
